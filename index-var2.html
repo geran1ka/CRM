@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="index-var2.css">
+
+  <script src="index.js" defer></script>
+  
+  <title>CRM</title>
+</head>
+<body>
+  <div class="overlay">
+    <div class="modal">
+      <div class="modal__container">
+        <h2 class="modal__title">Добавить ТОВАР</h2>
+
+        <button class="modal__close" type="button" aria-label="Закрыть">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 2L22 22" stroke="#6E6893" stroke-width="3" stroke-linecap="round"/>
+            <path d="M2 22L22 2" stroke="#6E6893" stroke-width="3" stroke-linecap="round"/>
+            </svg>          
+        </button>
+
+          <form class="modal__form form" action="https://jsonplaceholder.typicode.com/posts" method="post">
+            <fieldset class="form__group">
+
+                <label class="form__label form__label-name" for="name"><span>Наименование</span> 
+                  <input class="form__input" type="text" name="name" id="name" required>
+                </label>
+
+                <label class="form__label form__label-category" for="category"><span>Категория</span>
+                  <input class="form__input" type="text" name="category" id="category" required>
+                </label>
+
+                <label class="form__label form__label-units" for="units"><span>Единицы измерения</span>
+                  <input class="form__input" type="text" name="units" id="units" required>
+                </label>
+
+                <label class="form__label form__label-discount" for="discount"><span>Дисконт</span> 
+                  <div class="group-container">
+                    <input class="form-product__checkbox" type="checkbox" aria-label="Добавить скидку">
+                    <input class="form__input" type="text" name="discount" id="discount" disabled required>
+                  </div>  
+                </label>
+
+                <label class="form__label form__label-description" for="description"><span>Описание </span>
+                  <textarea class="form__input" name="description" id="description" cols="30" rows="5" required></textarea>
+                </label>
+
+                <label class="form__label form__label-count" for="count"><span>Количество</span> 
+                  <input class="form__input" type="number" name="count" id="count" required>
+                </label>
+
+                <label class="form__label form__label-price" for="price"><span>Цена</span> 
+                  <input class="form__input" type="number" name="price" id="price" required>
+                </label>
+
+                <label class="form__label-img form__label-add-img" for="add-img"><span>Добавить изображение</span>
+                  <input  class="visually-hidden" type="file" id="add-img">  
+                </label>
+
+            </fieldset>
+            <fieldset class="form__group-2">
+              <p class="form__text">Итоговая стоимость: <span class="form__text-price">$ 900.00</span></p>
+              <button class="form__btn" type="submit" formtarget="_blank">Добавить товар</button>  
+            </fieldset>
+          </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

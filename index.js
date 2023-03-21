@@ -9,3 +9,5 @@ const price = 20000;
 console.log('product: ', product);
 
 console.log(`Итоговая сумма покупки ${product} составляет ${count * price} руб.`)
+
+
