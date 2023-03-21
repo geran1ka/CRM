@@ -1,15 +1,13 @@
 'use strict';
 
-const product = 'sony playstation';
+const product = prompt('Введите наименование товара: ');
+const count = +prompt('Введите количество товара: ');
+const category = prompt('Введите категорию товара: ');
+const price = +prompt('Введите цену товара: ');
 
-const count = 5;
 
-const category = 'Игровая приставка';
-
-const price = 20000;
-
-console.log('product: ', product);
-
-console.log(`Итоговая сумма покупки ${product} составляет ${count * price} руб.`)
+console.log('count: ', typeof count);
+console.log('price: ', typeof price);
+console.log(`"На складе ${count} единиц(ы) товара "${product}" на сумму ${count * price} руб."`)
 
 
