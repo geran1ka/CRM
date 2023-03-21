@@ -1,3 +1,5 @@
+'use strict';
+
 const product = 'sony playstation';
 
 const count = 5;
