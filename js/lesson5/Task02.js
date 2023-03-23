@@ -2,7 +2,7 @@
 
 const isPrime = (number) => {
   let arr = [];
-  if (number < 0) return false
+  if (number < 2) return false
   for (let i = 1; i <= number ; ++i) {
     if (number % i === 0) {
       arr.push(i);
@@ -14,4 +14,8 @@ const isPrime = (number) => {
 const result = isPrime(-1)
 console.log('result: ', result);
 
-
+for (let i = -100; i < 100; ++i) {
+  const result = isPrime(i)
+console.log(`${i} -- ${result}`);
+  
+}
