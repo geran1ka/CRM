@@ -1,5 +1,5 @@
 'use strict';
-/*
+
 const income = +prompt('Введите сумму Вашего дохода: ');
 
 if (Number.isNaN(income)) {
@@ -10,4 +10,4 @@ if (Number.isNaN(income)) {
   console.log(`Ваш налог составляет: ${income * 0.2}`);
 } else {
   console.log(`Ваш налог составляет: ${income * 0.3}`);
-}*/
+}
