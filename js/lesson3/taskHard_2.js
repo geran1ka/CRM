@@ -1,3 +1,4 @@
+'use strict';
 /*
 const income = +prompt('Введите сумму Вашего дохода: ');
 let nalog = NaN;

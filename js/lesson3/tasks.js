@@ -1,3 +1,4 @@
+'use strict';
 //Вторая задача
 /*
 const rain = Math.round(Math.random());
