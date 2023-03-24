@@ -1,15 +1,19 @@
 'use strict';
 
-const getMinNumber = (numberOne, numberTwo) => {
-  return (numberOne + numberTwo - Math.abs(numberOne - numberTwo)) / 2;
+const getMinNumber = (a, b) => {
+  a > b || a;
+  a < b || (a = b);
+  return a;
 }
 
-const getMaxNumber = (numberOne, numberTwo) => {
-  return (numberOne + numberTwo + Math.abs(numberOne - numberTwo)) / 2;
+const getMaxNumber = (a, b) => {
+  a < b || a;
+  a > b || (a = b);
+  return a;
 }
 
-const result = getMinNumber(10, -50);
-console.log('result: ', result);
+const minimun = getMinNumber(150, 25);
+console.log('minimun: ', minimun);
 
-const resultTwo = getMaxNumber(10, 91);
-console.log('resultTwo: ', resultTwo);
+const maximum = getMaxNumber(150, 25);
+console.log('maximum: ', maximum);
