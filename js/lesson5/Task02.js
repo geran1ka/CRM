@@ -1,21 +1,14 @@
 'use strict';
 
 const isPrime = (number) => {
-  let arr = [];
-  if (number < 2) return false
-  for (let i = 1; i <= number ; ++i) {
-    if (number % i === 0) {
-      arr.push(i);
+  for (let i = 2; i <= Math.round(Math.sqrt(number)) ; ++i) {
+    if (!(number % i)) {
+      return false;
     }
   }
-    return arr.length <= 2 ? true : false;
+    return number > 2;
 }
 
-const result = isPrime(-1)
-console.log('result: ', result);
-
-for (let i = -100; i < 100; ++i) {
-  const result = isPrime(i)
-console.log(`${i} -- ${result}`);
-  
+for (let i = -100, count = 0; i < 542; ++i) {
+  isPrime(i) && console.log(`${++count}) -- ${i}`);
 }
