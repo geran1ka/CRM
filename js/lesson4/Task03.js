@@ -13,10 +13,10 @@ const calculate = (orderPrice, countProduct, promocod) => {
 
   if (promocod === 'METHED') {
     orderPriceDiscount -= orderPriceDiscount * 0.1;
-  } else if (promocod === 'G3H2Z1' && orderPriceDiscount > 2000) {
+  }
+  
+  if (promocod === 'G3H2Z1' && orderPriceDiscount > 2000) {
     orderPriceDiscount -= 500;
-  } else {
-    return orderPriceDiscount
   }
 
   return orderPriceDiscount

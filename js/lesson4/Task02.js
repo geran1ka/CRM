@@ -1,21 +1,20 @@
 'use strict';
 
-const getModifiedString = (string) => {
-  let modifiedString = string.toLowerCase();
-  modifiedString = modifiedString.slice(0,1).toUpperCase() + modifiedString.slice(1);
-  return modifiedString;
+const getModifiedString = string => {
+  const modifiedString = string.trim().toLowerCase();
+  return modifiedString[0].toUpperCase() + modifiedString.slice(1);
 }
 
-const result = getModifiedString('пРИВЕТ МИР');
+const result = getModifiedString('  пРИВЕТ МИР');
 console.log('result: ', result);
 
 //Вариант 2
-const getModifiedStringAlt = (str) => {
-  let modifiedString = str.toLowerCase();
-  return modifiedString.replace(modifiedString.charAt(0), modifiedString.charAt(0).toUpperCase());
+const getModifiedStringAlt = string => {
+  let modifiedString = string.trim().toLowerCase();
+  return modifiedString.replace(modifiedString[0], modifiedString[0].toUpperCase());
 }
 
-const resultAlt = getModifiedStringAlt('пРиВеТ МиР');
+const resultAlt = getModifiedStringAlt('  пРиВеТ МиР');
 console.log('resultAlt: ', resultAlt);
 
 
