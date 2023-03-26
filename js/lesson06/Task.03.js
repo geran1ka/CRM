@@ -22,3 +22,7 @@ const addPrefixAlt  = (arr, prefix) => {
 }
 const resultAlt = addPrefixAlt(names, 'Mr')
 console.log('resultAlt: ', resultAlt);
+
+names.forEach((item, index, array) => {
+  console.log(item, index, array);
+})

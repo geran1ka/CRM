@@ -25,3 +25,15 @@ const getAveragePriceGoods = (arr) => {
 const result = getAveragePriceGoods(allCashbox);
 console.log('result: ', result);
 
+//Вариант 2
+const getAveragePriceGoodsAlt = (arr) => {
+
+  let itemPrice = arr.reduce((acc, current) =>  acc + current[1]/current[0], 0);
+
+  return itemPrice = Math.round(itemPrice * 100 / allCashbox.length) / 100;
+
+};
+
+const resultAlt = getAveragePriceGoodsAlt(allCashbox);
+console.log('resultZlt: ', resultAlt);
+
