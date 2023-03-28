@@ -3,7 +3,7 @@
 const getRandomNumber =  () => {
   return Math.ceil(Math.random() * 10);
 }
-
+/*
 const getUserNumber = () => {
   let userNumber;
   while (!userNumber) {
@@ -20,19 +20,25 @@ const getUserNumber = () => {
   }
   return Number(userNumber);
 };
-
+*/
 const randomNumber = getRandomNumber();
 let game = true;
-let count = 0;
+let count = 1;
 
 while (game) {
-  let item = getUserNumber();
+  let item = prompt('Введите Ваш вариант загаднного числа: ');
     
   switch (game) {
     case (item === null) :
       game = false;
       console.log('Игра завершена пользователем!');
       alert('Игра завершена пользователем!');
+      break;
+
+    case (Number.isNaN(Number(item)) || item === '') :
+      console.log('Введи число!');
+      alert('Введи число!');
+      count -= 1;
       break;
       
     case (item < randomNumber) :
@@ -45,7 +51,7 @@ while (game) {
       alert('Меньше');
       break;
 
-    case (item === randomNumber) : 
+    case (+item === randomNumber) : 
       console.log("Правильно");
       alert("Правильно");
       console.log(`Вы угадали число с ${count} попытки!`);
