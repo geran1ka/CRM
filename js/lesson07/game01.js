@@ -1,26 +1,9 @@
 'use strict';
 
 const getRandomNumber =  () => {
-  return Math.ceil(Math.random() * 10);
+  return Math.ceil(Math.random() * 100);
 }
-/*
-const getUserNumber = () => {
-  let userNumber;
-  while (!userNumber) {
-    userNumber = prompt('Введите Ваш вариант загаднного числа: ');
 
-    if(userNumber === null) {
-      return userNumber;
-    };
-
-    if(Number.isNaN(Number(userNumber)) || userNumber === '') {
-      console.log('Введи число!');
-      alert('Введи число!');
-    }
-  }
-  return Number(userNumber);
-};
-*/
 const randomNumber = getRandomNumber();
 let game = true;
 let count = 1;
