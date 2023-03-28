@@ -1,32 +1,30 @@
 'use strict';
 
 const allStudents = ['Иванов', 'Петров', 'Сидоров', 'Кузнецов', 'Смирнов', 'Попов', 'Соколов'];
-const failedStudents = ['Сидоров', 'Смирнов', 'Попов'];
-//Вариант 1
-const filter = (arrayOne, arrayTwo) => {
-  const passedStudents = [...arrayOne];
-  for (let key of arrayTwo) {
-    passedStudents.splice(passedStudents.indexOf(key), 1);
-    console.log(passedStudents);
-    
+const failedStudents = ['Сидоров', 'Смирнов', 'Попов' ];
+/*
+//Вариант от Кирилла
+const filter = (allList, failedList) => {
+  const passedList = [];
+  for (let key of allList) {
+    if(!failedList.includes(key)) {
+      passedList.push(key)
+    }
   }
-  return passedStudents;
+  return passedList;
 }
 
 const result = filter(allStudents, failedStudents);
 console.log('result: ', result);
+*/
+//Вариант с методом forEach
 
-//Вариант с защитой в случае ошибки с фамилией студента;
-const filterAlt = (arrayOne, arrayTwo) => {
-  const passedStudents = [...arrayOne];
-  for (let key of arrayTwo) {
-    if(passedStudents.indexOf(key) === -1) {
-      continue;
-    };
-    passedStudents.splice(passedStudents.indexOf(key), 1);
-  }
-  return passedStudents;
+const filterAlt = (allList, failedList) => {
+  const passedList = [];
+  allList.forEach(item => !failedList.includes(item) ? passedList.push(item) : false);
+  return passedList;
 }
 
-const resultAlt = filterAlt(allStudents, failedStudents);
-console.log('resultAlt: ', resultAlt);
+const res = filterAlt(allStudents, failedStudents);
+console.log('res: ', res);
+
