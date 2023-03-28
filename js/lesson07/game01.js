@@ -12,15 +12,13 @@ const getUserNumber = () => {
     if(userNumber === null) {
       return userNumber;
     };
-  
-    userNumber *= 1;
 
-    if(Number.isNaN(userNumber)) {
+    if(Number.isNaN(Number(userNumber)) || userNumber === '') {
       console.log('Введи число!');
       alert('Введи число!');
     }
   }
-  return userNumber;
+  return Number(userNumber);
 };
 
 const randomNumber = getRandomNumber();
@@ -34,30 +32,34 @@ while (game) {
     case (item === null) :
       game = false;
       console.log('Игра завершена пользователем!');
+      alert('Игра завершена пользователем!');
       break;
       
-
     case (item < randomNumber) :
       console.log('Больше');
+      alert('Больше');
       break;
     
     case (item > randomNumber) :
       console.log('Меньше');
+      alert('Меньше');
       break;
 
     case (item === randomNumber) : 
       console.log("Правильно");
+      alert("Правильно");
+      console.log(`Вы угадали число с ${count} попытки!`);
+      alert(`Вы угадали число с ${count} попытки!`);
       game = false;
       break;
   };
   count += 1;
-
-
+  console.log('count: ', count);
   console.log('----');
 }
-console.log(`Вы угадали число с ${count} попытки!`);
 
 console.log("Если хочешь попробовать снова, то нажми F5");
+alert("Если хочешь попробовать снова, то нажми F5");
 
 
 

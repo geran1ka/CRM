@@ -1,9 +1,9 @@
 'use strict';
 
 //Вариант 1
-const randomGenerateArray =  (length) => (
-  [...new Array(length)].map(() => Math.round(Math.random() * 100))
-);
+const randomGenerateArray =  length => {
+  return [...new Array(length)].map(() => Math.round(Math.random() * 100))
+};
 const result = randomGenerateArray(5);
 console.log('result: ', result);
 
