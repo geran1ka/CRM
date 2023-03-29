@@ -37,12 +37,6 @@ while (game) {
       alert('Это число вы уже вводили');
       count--;
       continue;
-    
-    case (+item < start || +item > end) :
-      console.log('Это число за пределами указанного Вами диапазона');
-      alert('Это число за пределами указанного Вами диапазона');
-      count--;
-      break;
 
     case (+item === randomNumber) : 
       console.log("Правильно");
@@ -52,13 +46,13 @@ while (game) {
       arrNumberUser.push(+item);
       game = false;
       break;
-      /*
+      
     case (count === numberOfAttempts) :
       game = false;
       console.log('Вы потротатили все свои попытки. Игра окончена!');
       alert(`Вы потротатили все свои попытки. Игра окончена!`)
       break;
-*/
+
     case (item < randomNumber) :
       arrNumberUser.push(+item);
       console.log('Больше');
@@ -71,12 +65,6 @@ while (game) {
       alert('Меньше');
       break;
   };
-
-  if (arrNumberUser.length === numberOfAttempts && game) {
-    game = false;
-    console.log('Вы потротатили все свои попытки. Игра окончена!');
-    alert(`Вы потротатили все свои попытки. Игра окончена!`)
-  }
   console.log('----');
 }
 console.log("Если хочешь попробовать снова, то нажми F5");
