@@ -35,11 +35,9 @@ end === null ? game = false : end *= 1;
 end < start ? [start, end] = [end, start] : '';
 
 const randomNumber = getRandomNumber(start, end);
-
 const numberOfAttempts = Math.ceil((end - start) * 0.3);
 
 while (game) {
-
   let item = getUserPrompt('Введите Ваш вариант загаднного числа');
 
   switch (game) {
