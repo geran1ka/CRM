@@ -14,7 +14,8 @@ const cart = {
     return this.count += number;
   },
   calculateItemPrice() {
-   return this.items.reduce((acc, item) => acc + item.priceProduct * item.countProduct, 0);
+    return this.items.reduce((acc, item) => acc + item.priceProduct *
+      item.countProduct, 0);
   },
   clear() {
     this.items = [];
@@ -24,7 +25,7 @@ const cart = {
     console.log(JSON.stringify(this.items));
     console.log('this.totalPrice: ', this.totalPrice);
   },
-}
+};
 console.log(cart);
 cart.add('Вино', 1000, 5);
 cart.print();
