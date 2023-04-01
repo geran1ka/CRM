@@ -14,8 +14,8 @@ const cart = {
     return this.count += number;
   },
   calculateItemPrice() {
-    return this.items.reduce((acc, item) => acc + item.priceProduct *
-      item.countProduct, 0);
+    return this.items.reduce((acc, item) =>
+      acc + item.priceProduct * item.countProduct, 0);
   },
   clear() {
     this.items = [];
