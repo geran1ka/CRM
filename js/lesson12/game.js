@@ -26,6 +26,7 @@
 })();
 */
 const FIGURES_RUS = ['камень', 'ножницы', 'бумага'];
+const lang = ['камень', 'ножницы', 'бумага'];
 const getRandomIntInclusive = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -37,84 +38,91 @@ const result = {
   computer: 0,
 };
 
-const start = (game, obj) => {
+const start = (game, obj, lang) => {
+  // функция оставляет только первый символ
   const sliceStr = str => str.slice(0, 1);
+  const strLower = str => str.toLowerCase();
+  const findCharArray = (arr, char) =>
+    arr.find(item => sliceStr(item) === char);
+  /*
+  if (userResponse === null) return false;
+  if (sliceStr(findCharArray(FIGURES_RUS, userResponse)) === userResponse) {
+    return userResponse;
+  } else {
+    return getUserResponse();
+*/
 
-  const comp = sliceStr(FIGURES_RUS[getRandomIntInclusive(0, 2)]);
-  const getUserResponse = () => {
-    const userResponse = prompt(`${FIGURES_RUS}: `);
-    if (userResponse === null) return false;
-    const userResponseAlt = sliceStr(userResponse).toLowerCase();
-    if (FIGURES_RUS.find(item => item.slice(0, 1) === userResponseAlt)) {
-      return userResponseAlt;
+  const getUserResponse = (arr) => {
+    let userResponse = prompt(`${arr}: `);
+    if (userResponse === null) {
+      return false;
     } else {
-      return getUserResponse();
+      userResponse = strLower(sliceStr(userResponse));
     }
+    return findCharArray(arr, userResponse) ?
+      userResponse : getUserResponse(arr);
   };
 
-  const user = getUserResponse();
+  const winner = (player, comp, win) => {
+    alert(`
+    Компьютер: ${comp}
+    Вы: ${player}
+    Победил ${win}
+    `);
+  };
+
+  // Выбор компьютера
+  const comp = sliceStr(lang[getRandomIntInclusive(0, 2)]);
+  console.log('comp: ', comp);
+  // Выбо игрока
+  const user = getUserResponse(lang);
+  console.log('user: ', user);
   if (!user) return obj;
   console.log(`user : ${user} | comp : ${comp}`);
-  if (user === 'н' && comp === 'б') {
-    alert(`
-            Компьютер: ${comp}
-            Вы: ${user}
-            'Победил игрок'
-    `);
-    obj.player++;
-    game = false;
-  } else if (user === 'к' && comp === 'н') {
-    alert(`
-            Компьютер: ${comp}
-            Вы: ${user}
-            'Победил игрок'
-    `);
-    obj.player++;
-    game = false;
-  } else if (user === 'б' && comp === 'к') {
-    alert(`
-            Компьютер: ${comp}
-            Вы: ${user}
-            'Победил игрок'
-    `);
-    obj.player++;
-    game = false;
-  } else if (user === 'б' && comp === 'н') {
-    alert(`
-            Компьютер: ${comp}
-            Вы: ${user}
-            'Победил комп'
-    `);
-    obj.computer++;
-    game = false;
-  } else if (user === 'н' && comp === 'к') {
-    alert(`
-            Компьютер: ${comp}
-            Вы: ${user}
-            'Победил комп'
-    `);
-    game = false;
-    obj.computer++;
-  } else if (user === 'к' && comp === 'б') {
-    alert(`
-            Компьютер: ${comp}
-            Вы: ${user}
-            'Победил комп'
-    `);
-    game = false;
-    obj.computer++;
-  } else {
-    console.log('Ничья');
-    game = false;
+  switch (game) {
+    case (user === 'н' && comp === 'б'):
+      winner(user, comp, 'игрок');
+      obj.player++;
+      game = false;
+      break;
+    case (user === 'к' && comp === 'н'):
+      winner(user, comp, 'игрок');
+      obj.player++;
+      game = false;
+      break;
+    case (user === 'б' && comp === 'к'):
+      winner(user, comp, 'игрок');
+      obj.player++;
+      game = false;
+      break;
+    case (user === 'б' && comp === 'н'):
+      winner(user, comp, 'компьютер');
+      obj.computer++;
+      game = false;
+      break;
+    case (user === 'н' && comp === 'к'):
+      winner(user, comp, 'компьютер');
+      obj.computer++;
+      game = false;
+      break;
+    case (user === 'к' && comp === 'б'):
+      winner(user, comp, 'компьютер');
+      obj.computer++;
+      game = false;
+      break;
+    default:
+      console.log('Ничья');
+      game = false;
+      break;
   }
   if (!game) {
     const game = confirm('Еще');
-    if (game) return start(game, obj);
+    if (game) return start(game, obj, lang);
   }
   return obj;
 };
 
 
-const res = start(game, result);
+const res = start(game, result, lang);
 console.log('res: ', res);
 console.log(`игрок ${result.player} \\ компьютен ${result.computer}`);
