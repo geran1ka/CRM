@@ -33,7 +33,6 @@
 
     const lang = language === true ? FIGURES_ENG : FIGURES_RUS;
     const keyLaunge = language === true ? 0 : 1;
-    console.log('lang: ', keyLaunge);
 
     return function start() {
       // функция оставляет только первый символ
@@ -47,8 +46,8 @@
       const getUserResponse = (arr) => {
         let userResponse = prompt(`${arr}: `);
         if (userResponse === null) {
-          const user = confirm(`${gameLaunge.stopPlaying[keyLaunge]}`);
-          return !user ? getUserResponse(arr) : false;
+          const stopPlay = confirm(`${gameLaunge.stopPlaying[keyLaunge]}`);
+          return !stopPlay ? getUserResponse(arr) : false;
         } else {
           userResponse = strLower(sliceStr(userResponse));
         }
