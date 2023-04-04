@@ -25,6 +25,7 @@
   // window.RPS = game;
 })();
 */
+/*
 const FIGURES_RUS = ['камень', 'ножницы', 'бумага'];
 const lang = ['камень', 'ножницы', 'бумага'];
 const getRandomIntInclusive = (min, max) => {
@@ -51,7 +52,7 @@ const start = (game, obj, lang) => {
   } else {
     return getUserResponse();
 */
-
+/*
   const getUserResponse = (arr) => {
     let userResponse = prompt(`${arr}: `);
     if (userResponse === null) {
@@ -128,3 +129,4 @@ const start = (game, obj, lang) => {
 const res = start(game, result, lang);
 console.log('res: ', res);
 console.log(`игрок ${result.player} \\ компьютен ${result.computer}`);
+*/

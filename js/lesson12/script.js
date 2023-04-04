@@ -1,2 +1,4 @@
+'use strict';
 
-const startGame = window.RPS();
+const gameS = window.RPS;
+gameS()
