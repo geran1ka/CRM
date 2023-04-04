@@ -58,7 +58,7 @@
       const comp = sliceStr(lang[getRandomIntInclusive(0, 2)]);
       // Выбор игрока
       const user = getUserResponse(lang);
-      // функция вывода резкльтата
+      // функция вывода результата
       const winner = (win) => {
         alert(`
           ${gameLaunge.computer[keyLaunge]}: ${findCharArray(lang, comp)}
