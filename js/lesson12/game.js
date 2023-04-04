@@ -1,130 +1,120 @@
 'use strict';
-/*
+
 (() => {
   const FIGURES_ENG = ['rock', 'scissors', 'paper'];
   const FIGURES_RUS = ['камень', 'ножницы', 'бумага'];
+  const gameLaunge = {
+    player: ['player', 'игрок'],
+    computer: ['computer', 'компьютер'],
+    more: ['More', 'Ещё'],
+    stopPlaying: ['Are you sure you want to stop playing',
+      'Вы точно хотите прервать игру'],
+    you: ['You', 'Вы'],
+    win: ['Won', 'Победил'],
+    draw: ['Draw', 'Ничья'],
+    resultGame: ['Game results', 'Результаты игры'],
+  };
 
   const getRandomIntInclusive = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
+  // функция запроса выбора языка игры
+  const getFigure = (lang) => confirm(`Ok - English, cancel - Russia`);
+  window.languageGame = getFigure;
 
-  const getFigure = (lang) => undefined;
   const game = (language) => {
     const result = {
       player: 0,
       computer: 0,
     };
-    const lang = language === 'EN' || language === 'ENG' ?
-      FIGURES_ENG : FIGURES_RUS;
 
-    return function start() {};
+    const lang = language === true ? FIGURES_ENG : FIGURES_RUS;
+    const keyLaunge = language === true ? 0 : 1;
+    console.log('lang: ', keyLaunge);
+
+    return function start() {
+      // функция оставляет только первый символ
+      const sliceStr = str => str.slice(0, 1);
+      // функция делает все мимволы строчными
+      const strLower = str => str.toLowerCase();
+      // функция поиска элемента в массиве по первому символу
+      const findCharArray = (arr, char) =>
+        arr.find(item => sliceStr(item) === char);
+      // функция запроса данных от игрока
+      const getUserResponse = (arr) => {
+        let userResponse = prompt(`${arr}: `);
+        if (userResponse === null) {
+          const user = confirm(`${gameLaunge.stopPlaying[keyLaunge]}`);
+          return !user ? getUserResponse(arr) : false;
+        } else {
+          userResponse = strLower(sliceStr(userResponse));
+        }
+        return findCharArray(arr, userResponse) ?
+            userResponse : getUserResponse(arr);
+      };
+      // Выбор компьютера
+      const comp = sliceStr(lang[getRandomIntInclusive(0, 2)]);
+      // Выбор игрока
+      const user = getUserResponse(lang);
+      // функция вывода резкльтата
+      const winner = (win) => {
+        alert(`
+          ${gameLaunge.computer[keyLaunge]}: ${findCharArray(lang, comp)}
+          ${gameLaunge.player[keyLaunge]}: ${findCharArray(lang, user)}
+          ${gameLaunge.win[keyLaunge]}: ${win}
+          `);
+      };
+      // Поверка на выход игрока
+      if (!user) return result;
+      console.log(`user : ${user} | comp : ${comp}`);
+      // Определение победителя
+      switch (true) {
+        case (user === `${sliceStr(lang[1])}` &&
+          comp === `${sliceStr(lang[2])}`):
+          winner(`${gameLaunge.player[keyLaunge]}`);
+          result.player++;
+          break;
+        case (user === `${sliceStr(lang[0])}` &&
+          comp === `${sliceStr(lang[1])}`):
+          winner(`${gameLaunge.player[keyLaunge]}`);
+          result.player++;
+          break;
+        case (user === `${sliceStr(lang[2])}` &&
+          comp === `${sliceStr(lang[0])}`):
+          winner(`${gameLaunge.player[keyLaunge]}`);
+          result.player++;
+          break;
+        case (user === `${sliceStr(lang[2])}` &&
+          comp === `${sliceStr(lang[1])}`):
+          winner(`${gameLaunge.computer[keyLaunge]}`);
+          result.computer++;
+          break;
+        case (user === `${sliceStr(lang[1])}` &&
+          comp === `${sliceStr(lang[0])}`):
+          winner(`${gameLaunge.computer[keyLaunge]}`);
+          result.computer++;
+          break;
+        case (user === `${sliceStr(lang[0])}` &&
+          comp === `${sliceStr(lang[2])}`):
+          winner(`${gameLaunge.computer[keyLaunge]}`);
+          result.computer++;
+          break;
+        default:
+          winner(`${gameLaunge.draw[keyLaunge]}`);
+          break;
+      }
+      // условие перезапуска
+      if (true) {
+        const continuePlay = confirm(`${gameLaunge.more[keyLaunge]}`);
+        if (continuePlay) return start();
+      }
+      alert(`${gameLaunge.resultGame[keyLaunge]}: 
+      ${gameLaunge.player[keyLaunge]}: ${result.player}
+      ${gameLaunge.computer[keyLaunge]}: ${result.computer}`);
+    };
   };
 
-  // window.RPS = game;
+  window.RPS = game;
 })();
-*/
-const FIGURES_RUS = ['камень', 'ножницы', 'бумага'];
-const lang = ['камень', 'ножницы', 'бумага'];
-const getRandomIntInclusive = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
-const game = true;
-const result = {
-  player: 0,
-  computer: 0,
-};
-
-const start = (game, obj, lang) => {
-  // функция оставляет только первый символ
-  const sliceStr = str => str.slice(0, 1);
-  const strLower = str => str.toLowerCase();
-  const findCharArray = (arr, char) =>
-    arr.find(item => sliceStr(item) === char);
-  /*
-  if (userResponse === null) return false;
-  if (sliceStr(findCharArray(FIGURES_RUS, userResponse)) === userResponse) {
-    return userResponse;
-  } else {
-    return getUserResponse();
-*/
-
-  const getUserResponse = (arr) => {
-    let userResponse = prompt(`${arr}: `);
-    if (userResponse === null) {
-      const user = confirm(`Вы точно хотите прервать игру`);
-      console.log('user: ', user);
-      return !user ? getUserResponse(arr) : false;
-    } else {
-      userResponse = strLower(sliceStr(userResponse));
-    }
-    return findCharArray(arr, userResponse) ?
-      userResponse : getUserResponse(arr);
-  };
-
-  const winner = (player, comp, win) => {
-    alert(`
-    Компьютер: ${comp}
-    Вы: ${player}
-    Победил ${win}
-    `);
-  };
-
-  // Выбор компьютера
-  const comp = sliceStr(lang[getRandomIntInclusive(0, 2)]);
-  console.log('comp: ', comp);
-  // Выбо игрока
-  const user = getUserResponse(lang);
-  console.log('user: ', user);
-  if (!user) return obj;
-  console.log(`user : ${user} | comp : ${comp}`);
-  switch (game) {
-    case (user === 'н' && comp === 'б'):
-      winner(user, comp, 'игрок');
-      obj.player++;
-      game = false;
-      break;
-    case (user === 'к' && comp === 'н'):
-      winner(user, comp, 'игрок');
-      obj.player++;
-      game = false;
-      break;
-    case (user === 'б' && comp === 'к'):
-      winner(user, comp, 'игрок');
-      obj.player++;
-      game = false;
-      break;
-    case (user === 'б' && comp === 'н'):
-      winner(user, comp, 'компьютер');
-      obj.computer++;
-      game = false;
-      break;
-    case (user === 'н' && comp === 'к'):
-      winner(user, comp, 'компьютер');
-      obj.computer++;
-      game = false;
-      break;
-    case (user === 'к' && comp === 'б'):
-      winner(user, comp, 'компьютер');
-      obj.computer++;
-      game = false;
-      break;
-    default:
-      console.log('Ничья');
-      game = false;
-      break;
-  }
-  if (!game) {
-    const game = confirm('Еще');
-    if (game) return start(game, obj, lang);
-  }
-  return obj;
-};
-
-
-const res = start(game, result, lang);
-console.log('res: ', res);
-console.log(`игрок ${result.player} \\ компьютен ${result.computer}`);
