@@ -105,11 +105,7 @@
           winner(`${gameLaunge.draw[keyLaunge]}`);
           break;
       }
-      // условие перезапуска
-      if (true) {
-        const continuePlay = confirm(`${gameLaunge.more[keyLaunge]}`);
-        if (continuePlay) return start();
-      }
+      return confirm(`${gameLaunge.more[keyLaunge]}`) ? start() :
       alert(`${gameLaunge.resultGame[keyLaunge]}: 
       ${gameLaunge.player[keyLaunge]}: ${result.player}
       ${gameLaunge.computer[keyLaunge]}: ${result.computer}`);
