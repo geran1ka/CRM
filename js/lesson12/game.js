@@ -25,14 +25,14 @@
   const getFigure = (lang) => confirm(`Ok - English, cancel - Russia`);
   window.languageGame = getFigure;
 
-  const game = (language) => {
+  const game = (language = 'RUS') => {
     const result = {
       player: 0,
       computer: 0,
     };
 
-    const lang = language === true ? FIGURES_ENG : FIGURES_RUS;
-    const keyLaunge = language === true ? 0 : 1;
+    const lang = language === 'EN' || language === 'ENG' ? FIGURES_ENG : FIGURES_RUS;
+    const keyLaunge = language === 'EN' || language === 'ENG' ? 0 : 1;
 
     return function start() {
       // функция оставляет только первый символ
@@ -58,6 +58,7 @@
       const comp = sliceStr(lang[getRandomIntInclusive(0, 2)]);
       // Выбор игрока
       const user = getUserResponse(lang);
+      console.log('user: ', user);
       // функция вывода результата
       const winner = (win) => {
         alert(`
