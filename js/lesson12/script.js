@@ -1,6 +1,5 @@
 'use strict';
 
-//const language = window.languageGame();
-const gameStart = window.RPS();
+const gameStart = window.RPS('DE');
 
 gameStart();

@@ -1,6 +1,7 @@
 'use strict';
+/*
 const FIGURES_RUS = ['камень', 'ножницы', 'бумага'];
-const lang = 'RUS'
+const lang = 'RUS';
 const getRandomIntInclusive = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -8,10 +9,9 @@ const getRandomIntInclusive = (min, max) => {
 };
 
 
-
 // функция оставляет только первый символ
 // количесство символов для среза, если undefined - то слово должно вводиться полностью
-const countSlice = undefined; 
+const countSlice = undefined;
 const sliceStr = (str) => str.trim().slice(0, countSlice);
 // функция поиска элемента в массиве по первому символу
 const findCharArray = (arr, char) =>
@@ -64,6 +64,7 @@ const winner = (winner) => {
 
 // Выбор компьютера
 const comp = getRandomIntInclusive(0, 2);
+console.log('comp: ', comp);
 console.log('comp: ', gameLaunge[lang].gameFigures[comp]);
 // Определение победителя
 switch (true) {
@@ -79,4 +80,40 @@ switch (true) {
     winner('computer');
     break;
 }
+*/
+const result = {
+  _player: 0,
+  _computer: 0,
+  get player() {
+    return this._player;
+  },
+  set player(count) {
+    return this._player += count;
+  },
+  get computer() {
+    return this._player;
+  },
+  set computer(count) {
+    return this._player += count;
+  },
+};
 
+result.player = 2;
+console.log(result.player);
+result.player = 2;
+console.log(result.player);
+
+
+const getFigure = (language) => {
+  const langGame = language.trim().toUpperCase();
+  console.log('langGame: ', langGame);
+  console.log("langGame === 'EN' || langGame === 'ENG': ", langGame === 'EN' || langGame === 'ENG');
+ if (langGame === 'EN' || langGame === 'ENG') {
+  return 'ENG';
+ } else {
+  return 'RUS';
+ }
+}
+
+const res = getFigure('ENG');
+console.log('res: ', res);
