@@ -62,7 +62,8 @@
       },
     };
 
-    // функция запроса выбора языка игры
+    // функция запроса выбора языка игры вариант 1
+    /* Может тут правильнее использовать if???
     const getFigure = (language) => {
       if (!language) return 'RUS';
 
@@ -73,6 +74,22 @@
         language.trim().toUpperCase() === 'DEU') return 'DEU';
 
       return 'RUS';
+    };
+    */
+    // функция запроса выбора языка игры
+    const getFigure = (language) => {
+      if (!language) return 'RUS';
+
+      switch (true) {
+        case (language.trim().toUpperCase() === 'EN' ||
+                language.trim().toUpperCase() === 'ENG'):
+          return 'ENG';
+        case (language.trim().toUpperCase() === 'DE' ||
+              language.trim().toUpperCase() === 'DEU'):
+          return 'DEU';
+        default:
+          return 'RUS';
+      }
     };
 
     return function start() {
@@ -110,13 +127,19 @@
           `);
       };
       // Проверка на выход из игры
-      if (!user && user !== 0) return result;
-      console.log(`user : ${user} | comp : ${comp}`);
+      if (!user && user !== 0) {
+        return alert(`${gameLaunge[lang].resultGame}: 
+          ${gameLaunge[lang].player}: ${result.player}
+          ${gameLaunge[lang].computer}: ${result.computer}`);
+      }
+      console.log(`
+        user : ${gameLaunge[lang].gameFigures[user]} |
+        comp : ${gameLaunge[lang].gameFigures[comp]}`);
       // Определение победителя. Спасибо Кириллу за подсказки.
       switch (true) {
         case (user === comp):
-          console.log('ничья');
-          break;
+          winner('draw');
+          return start();
         case (comp === (user + 1) % 3):
           winner('player');
           result.player = 1;

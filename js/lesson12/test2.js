@@ -103,17 +103,14 @@ console.log(result.player);
 result.player = 2;
 console.log(result.player);
 
-
 const getFigure = (language) => {
-  const langGame = language.trim().toUpperCase();
-  console.log('langGame: ', langGame);
-  console.log("langGame === 'EN' || langGame === 'ENG': ", langGame === 'EN' || langGame === 'ENG');
- if (langGame === 'EN' || langGame === 'ENG') {
-  return 'ENG';
- } else {
-  return 'RUS';
- }
-}
+  if (!language) return 'RUS';
 
-const res = getFigure('ENG');
-console.log('res: ', res);
+  if (language.trim().toUpperCase() === 'EN' ||
+    language.trim().toUpperCase() === 'ENG') return 'ENG';
+
+  if (language.trim().toUpperCase() === 'DE' ||
+    language.trim().toUpperCase() === 'DEU') return 'DEU';
+
+  return 'RUS';
+};
