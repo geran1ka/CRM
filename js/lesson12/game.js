@@ -52,74 +52,59 @@
         return this._player;
       },
       set player(value) {
-        return this._player += value;
+        this._player += value;
       },
       get computer() {
         return this._computer;
       },
       set computer(value) {
-        return this._computer += value;
+        this._computer += value;
       },
     };
 
-    // функция запроса выбора языка игры вариант 1
-    /* Может тут правильнее использовать if???
-    const getFigure = (language) => {
-      if (!language) return 'RUS';
-
-      if (language.trim().toUpperCase() === 'EN' ||
-        language.trim().toUpperCase() === 'ENG') return 'ENG';
-
-      if (language.trim().toUpperCase() === 'DE' ||
-        language.trim().toUpperCase() === 'DEU') return 'DEU';
-
-      return 'RUS';
-    };
-    */
     // функция запроса выбора языка игры
-    const getFigure = (language) => {
-      if (!language) return 'RUS';
-
-      switch (true) {
-        case (language.trim().toUpperCase() === 'EN' ||
-                language.trim().toUpperCase() === 'ENG'):
+    const getLang = (language) => {
+      switch (language?.trim().toUpperCase()) {
+        case 'EN':
+        case 'ENG':
           return 'ENG';
-        case (language.trim().toUpperCase() === 'DE' ||
-              language.trim().toUpperCase() === 'DEU'):
+        case 'DE':
+        case 'DEU':
           return 'DEU';
         default:
           return 'RUS';
       }
     };
 
+    // Язык программы
+    const lang = getLang(language);
+
     return function start() {
-      // Язык программы
-      const lang = getFigure(language);
-      // Переменная для выбора количества символов в среза в функции sliceStr()
-      const countSlice = undefined;
-      // Функция среза
-      const sliceStr = (str) => str.trim().slice(0, countSlice);
-      // функция поиска индекса элемента в массиве
-      const findCharArray = (arr, word) =>
-        arr.findIndex(item =>
-          sliceStr(item, countSlice) === sliceStr(word, countSlice)
-              .toLowerCase());
       // функция запроса ввода данных от игрока
       const getUserResponse = (arr) => {
-        const userResponse = prompt(`${arr}: `);
+        let userResponse = prompt(`${arr}: `);
         if (userResponse === null) {
           const stopPlay = confirm(`${gameLaunge[lang].stopPlaying}`);
           return !stopPlay ? getUserResponse(arr) : false;
         }
-        return !(findCharArray(arr, userResponse) === -1) ?
-        findCharArray(arr, userResponse) : getUserResponse(arr);
+        /*
+        // Строгая проверка
+        const index = arr.indexOf(userResponse?.trim().toLocaleLowerCase);
+        return index !== -1 ? index : getUserResponse(arr);
+        */
+        // Нестрогая проверка
+        userResponse = userResponse.trim().toLocaleLowerCase();
+        const [found, isNotUniqe] = arr.filter(item =>
+          item.slice(0, userResponse.length) === userResponse);
+
+        return found && !isNotUniqe ? arr.indexOf(found) : getUserResponse(arr);
       };
       // Выбор компьютера
       const comp = getRandomIntInclusive(0, 2);
       // Выбор игрока
       const user = getUserResponse(gameLaunge[lang].gameFigures);
       // функция вывода результата
-      const winner = (winner) => {
+      const logWin = (winner) => {
         alert(`
           ${gameLaunge[lang].computer}: ${gameLaunge[lang].gameFigures[comp]}
           ${gameLaunge[lang].player}: ${gameLaunge[lang].gameFigures[user]}
@@ -138,14 +123,14 @@
       // Определение победителя. Спасибо Кириллу за подсказки.
       switch (true) {
         case (user === comp):
-          winner('draw');
+          logWin('draw');
           return start();
         case (comp === (user + 1) % 3):
-          winner('player');
+          logWin('player');
           result.player = 1;
           break;
         default:
-          winner('computer');
+          logWin('computer');
           result.computer = 1;
           break;
       }
