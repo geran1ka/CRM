@@ -1,0 +1,211 @@
+.cms {
+  padding-top: 79px;
+  padding-bottom: 110px;
+}
+
+.group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #C6C2DE;
+}
+
+.title {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;  
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6E6893;
+}
+
+.text {
+  margin: 0;
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+color: #6E6893;
+}
+
+.text-alt {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  color: #6D5BD0;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 108px 1fr 181px;
+  gap: 20px;
+  padding: 15px 20px;
+  background-color: #ffffff;
+  border-radius: 8px 8px 0 0;
+}
+
+.button {
+  outline: none;
+  border: none;
+}
+
+.button__filter {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  max-height: 40px;
+  border-radius: 6px;
+}
+
+.button__filter-svg {
+  width: 20px;
+  height: 20px;
+}
+
+.button__filter-text {
+  max-width: 58px;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #25213B;
+}
+
+.search {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.button__search {
+  position: absolute;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #F4F2FF;
+  max-height: 40px;
+}
+
+.input__search {
+  max-width: 392px;
+  width: 100%;
+  max-height: 40px;
+  padding: 13px 40px 12px;
+  background: #F4F2FF;
+  border-radius: 6px;
+  border: none;
+}
+
+.input__search::placeholder {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #6E6893;
+}
+
+.button__add-product {
+  padding: 10px 15px 10px 16px;
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background-color: #6D5BD0;
+  border-radius: 6px;
+}
+
+.container__table {
+  min-width: 1100px;
+  overflow-x: auto;
+}
+
+.table {
+  border-spacing: 15px;
+  background-color: #ffffff;
+
+  
+}
+
+.table__title {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #6E6893;
+  text-align: left;
+  background-color: #F4F2FF;
+}
+
+.table__cell-title {
+  padding: 15px 0;
+  background-color: #F4F2FF;
+  border-collapse: collapse;
+}
+
+.table__cell {
+  padding: 20px 0;
+}
+
+.table__cell-id {
+  max-width: 78px;
+}
+
+.table__cell-name {
+  width: 290px;
+}
+
+.table__cell-category {
+  width: 160px;
+}
+
+.table__cell-units {
+  max-width: 55px;
+}
+
+.table__cell-count {
+  max-width: 91px;
+}
+
+.table__cell-price,
+.table__cell-total {
+  width: 80px;
+}
+
+.table__cell-btn {
+  width: 135px;
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.table__body {
+  background-color: #ffffff;
+}
+
+.table__button {
+  height: 20px;
+}
+
+.table__row {
+  background-color: #ffffff;
+  min-height: 60px;
+}
+
+.table__cell {
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #25213B;
+  background-color: #ffffff;
+
+}

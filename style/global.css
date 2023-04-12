@@ -33,7 +33,7 @@ body {
   margin: 0 auto;
   font-family: Inter, sans-serif;
   color: #6e6893;
-  background-color: #fff;
+  background-color: #f2f0f9;
 }
 
 img, svg {
@@ -57,4 +57,11 @@ fieldset {
 .visually-hidden {
   position: fixed;
   transform: scale(0);
+}
+
+.container {
+  --width: 1100px;
+  --padding: 100px;
+  max-width: calc(var(--width) + var(--padding) * 2);
+  padding: 0 var(--padding);
 }
