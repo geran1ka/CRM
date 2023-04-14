@@ -32,8 +32,10 @@ body {
   min-height: 100vh;
   margin: 0 auto;
   font-family: Inter, sans-serif;
-  color: #6e6893;
-  background-color: #f2f0f9;
+  font-size: 12px;
+  line-height: calc(15/12);
+  color: var(--second-color, #6e6893);
+  background-color: var(--second-bg-color, #f4f2ff);
 }
 
 img, svg {
@@ -47,7 +49,6 @@ button {
   cursor: pointer;
 }
 
-
 h1,
 h2,
 fieldset {
@@ -60,22 +61,6 @@ fieldset {
 }
 
 .container {
-  --width: 1100px;
-  --padding: 100px;
   max-width: calc(var(--width) + var(--padding) * 2);
   padding: 0 var(--padding);
-}
-
-@media (max-width: 980px) {
-  .container {
-    --width: 880px;
-    --padding: 50px;
-  }
-}
-
-@media (max-width: 640px) {
-  .container {
-    --width: 600px;
-    --padding: 20px;
-  }
 }
