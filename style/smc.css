@@ -354,7 +354,8 @@
 .btn-back:active,
 .btn-next:active {
   transform: scale(1.3);
-  color: var(--persian-blue, #4636c3);}
+  color: var(--persian-blue, #4636c3);
+}
 
 @media (max-width: 740px) {
   .form-cms {
