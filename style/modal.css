@@ -1,11 +1,3 @@
-.overlay {
-  display: none;
-}
-
-.overlay_active {
-  display: flex;
-}
-
 .modal {
   position: relative;
   overflow-y: auto;

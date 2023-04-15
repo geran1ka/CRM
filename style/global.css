@@ -55,6 +55,12 @@ fieldset {
   margin: 0;
 }
 
+.button {
+  outline: inherit;
+  border: inherit;
+  background-color: inherit;
+}
+
 .visually-hidden {
   position: fixed;
   transform: scale(0);
@@ -63,4 +69,5 @@ fieldset {
 .container {
   max-width: calc(var(--width) + var(--padding) * 2);
   padding: 0 var(--padding);
+  margin: 0 auto;
 }

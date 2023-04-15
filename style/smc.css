@@ -17,7 +17,7 @@
   font-family: 'Inter';
   font-weight: 700;
   font-size: 24px;
-  line-height: 29px;  
+  line-height: calc(29/24);  
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--second-color, #6e6893);
@@ -39,19 +39,13 @@
   color: var(--violet, #6d5bd0);
 }
 
-.form-cms {
+.container__btn {
   display: grid;
   grid-template-columns: 108px 1fr 183px;
   gap: 20px;
   padding: 15px 18px 15px 20px;
   background-color: var(--main-bg-color, #ffffff);
   border-radius: 8px 8px 0 0;
-}
-
-.button {
-  outline: inherit;
-  border: inherit;
-  background-color: inherit;
 }
 
 .button-filter {
@@ -81,7 +75,7 @@
   font-family: 'Inter';
   font-weight: 400;
   font-size: 16px;
-  line-height: 19px;
+  line-height: calc(19/16);
   color: var(--main-color, #25213b);
 
   transition: color .3s ease-in-out;
@@ -141,7 +135,7 @@
   font-family: 'Inter';
   font-weight: 400;
   font-size: 12px;
-  line-height: 15px;
+  line-height: calc(15/12);
   color: var(--second-color, #6e6893);
 }
 
@@ -358,24 +352,29 @@
 }
 
 @media (max-width: 740px) {
-  .form-cms {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-areas: 
-      "filter"
-      "add"
-      "search";
-    justify-items: center;
-    gap: 10px;
-    padding: 10px 0px;
+  .container__group {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
-  .button__filter {
+  .container__btn {
+    grid-template-columns: 108px 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas: 
+      "filter add"
+      "search search";
+    gap: 10px;
+    padding: 10px 10px;
+  }
+
+  .button-filter {
     max-width: 108px;
+
   }
 
   .button-add-product {
     max-width: 183px;
+    justify-self: start;
   }
 
   .search {
@@ -389,11 +388,28 @@
 }
 
 @media (max-width: 640px) {
-  .container__group {
-    flex-direction: column;
+  .title {
+    font-size: 20px;
+  }
+  
+  .text {
+    font-size: 12px;
+  }
+
+  .text-alt {
+    font-size: 16px;
   }
 
   .button-add-product {
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+
+  .button-filter__text {
     font-size: 14px;
+  }
+
+  .search__input::placeholder {
+    font-size: 10px;
   }
 }
