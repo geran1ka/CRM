@@ -57,7 +57,7 @@ fieldset {
 
 .button {
   outline: inherit;
-  border: inherit;
+  border: none;
   background-color: inherit;
 }
 
